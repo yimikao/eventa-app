@@ -6,6 +6,21 @@
 
         <title>Eventa</title>
 
+        <script src="{{ asset('js/app.js') }}" defer></script>
+         <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+
+
+
+    
+
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -16,11 +31,13 @@
 
         <style>
             body {
-                font-family: 'Nunito';
+                /* font-family: 'Nunito'; */
             }
         </style>
     </head>
     <body class="antialiased">
+        
+
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -36,10 +53,15 @@
                 </div>
             @endif
 
-            
-        </div>
+            <div class="container text-center">
+                <h1>Events happen here!</h1>
+                    
+            <button type="button" class="btn btn-primary btn-lg">Browse Events</button>
 
-        div
+            </div>
+        </div>
+        
+       
 
     </body>
 </html>
