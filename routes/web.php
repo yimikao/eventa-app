@@ -24,9 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //VISITOR & USER
 Route::get('/events/{event}/register', [App\Http\Controllers\RegistrationController::class, 'store']);
-Route::get('/events', [App\Http\Controllers\EventController::class, 'index']);
+Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events');
 Route::get('/events/{event}', [App\Http\Controllers\EventController::class, 'show']);
 Route::get('/allevents/{user}', [App\Http\Controllers\UserController::class, 'show']);
+
 
 
 //USER
