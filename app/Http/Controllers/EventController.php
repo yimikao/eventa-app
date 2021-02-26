@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Auth;
 
@@ -54,8 +56,8 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Event $event)
-    {
-        return $event;
+    {   
+        return view('pages.event.event', ['event' => $event]);
     }
 
     /**
@@ -80,6 +82,11 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        if($event->user_id != Auth::id()) {
+            return abort(403);
+        }
+
+
         $request->validate([
             'theme' => 'required|max:255',
             // 'link' => 'required|url'
@@ -100,6 +107,6 @@ class EventController extends Controller
     {
         $event->delete();
 
-        return $redirect()->to('/events');
+        return redirect()->to('/events');
     }
 }

@@ -36,8 +36,12 @@ class RegistrationController extends Controller
      */
     public function store(Request $request, Event $event)
     {
-        return Registration::create(['event_id' => $event->id]);
-        // return $request->method();
+        if(Registration::create(['event_id' => $event->id])) {
+            return "registration successful";
+        }
+        
+        return "registration unsuccesful";
+
     }
 
     /**

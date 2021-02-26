@@ -1,21 +1,33 @@
+
 @extends('layouts.app')
 
 
 @section('content')
-    <div class="container text-center mt-5">
-        <h1 style="font-weight:bold">Events happen here!</h1>
+        <div class="contaier text-center mt-5">
+            <h1 style="color: var(--purple)">All events</h1>
 
-        @foreach ($events as $event)
-        <div class="card mb-5 p-5 col-xs-2">
-            <!-- <div class="card-body">Your awesome text</div> -->
-            <h4 class="card-title">{{ $event->theme }}</h4>
-            <p class=”card-text”> {{ $event->caption }}</p>
-            <div class=”card-footer”>Happening on:{{ $event->date }}</div>
-            <div class=”card-footer”>At:{{ $event->time }}</div>
+            
+
+            <div class="row d-flex m-auto">
+            @foreach ($events as $event)
+
+                <div class="card col-sm-3 m-2 p-5 bg-light text-primary ">
+                    
+                    <h4 class="card-title"><a class="text-primary" href="/events/{{ $event->id }}">{{ $event->theme }}</a></h4>
+                    <p class=”card-text”> {{ $event->caption }}</p>
+                    <div class=”card-footer”>Happening on: {{ $event->date }}</div>
+                    <div class=”card-footer”>Host: {{ $event->user->name }}</div>
+                    <div class=”card-footer”>At:{{ $event->time }}</div>
+
+                    @auth
+                        <button id= "btn" type="button" class="btn btn-primary btn-lg"> <a href="/dashboard/events/{{ $event->id }}/edit">Edit event</a></button>
+
+                    @endauth
+
+                </div>
+            @endforeach
+            </div>
 
         </div>
-        <!-- <h2 class="">This is event {{ $event->theme }}</h2> -->
-    @endforeach
-    </div>
     
 @endsection()

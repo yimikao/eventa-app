@@ -35,8 +35,8 @@ Route::group(['middleware' => 'auth', 'prefix'=>'dashboard'], function() {
     
     Route::get('/events/create', [App\Http\Controllers\EventController::class, 'create']);
     Route::post('/events/store', [App\Http\Controllers\EventController::class, 'store']);
-    Route::patch('/events/{event}/edit', [App\Http\Controllers\EventController::class, 'edit']);
-    Route::patch('/events/{event}/', [App\Http\Controllers\EventController::class, 'update']);
+    Route::get('/events/{event}/edit', [App\Http\Controllers\EventController::class, 'edit']);
+    Route::post('/events/{event}/', [App\Http\Controllers\EventController::class, 'update']);
     Route::delete('/events/{event}', [App\Http\Controllers\EventController::class, 'destroy']);
 
     Route::get('/registrations', [App\Http\Controllers\UserController::class, 'showRegistrations']);

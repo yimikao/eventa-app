@@ -13,6 +13,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 
 
 
@@ -37,8 +39,24 @@
     </head>
     <body class="antialiased">
         
+    <nav>
+        <h2>eventa</h2>
+        @if (Route::has('login'))
+            <ul>
+                <li id=""><a href="{{ url('/dashboard/events/create') }}">Create Event</a></li>
+            @auth
+                <li id="nav-btn"><a href="{{ url('/home') }}">Home</a></li>
+            @else
+                <li id="nav-btn"><a href="{{ route('login') }}">Login</a></li>
+                @if (Route::has('register'))
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @endif
 
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+                @endauth
+            </ul>
+        @endif
+    </nav>
+        <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -52,16 +70,14 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="container text-center">
-                <h1>Events happen here!</h1>
+        </div> -->
+    <main id="heading" class="">
+        <h1>Events happen here!</h1>
                     
-            <button type="button" class="btn btn-primary btn-lg">Browse Events</button>
+        <button id= "btn" type="button" class="btn btn-light btn-lg"> <a href="/events">Browse Events</a></button>
+        <!-- <button id= "btn" type="button" class="btn btn-secondary btn-lg"> <a href="/dashboard/events/create">Create Event</a></button> -->
 
-            </div>
-        </div>
-        
-       
+    </main>
 
     </body>
 </html>
