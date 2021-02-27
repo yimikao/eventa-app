@@ -58,7 +58,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('pages.user.profile', ['user' => Auth::user()]);
     }
 
     /**
@@ -70,7 +70,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        Auth::user()->update($request->only(['name']));
+
+        return redirect()->back()->with([
+            'success' => 'Changes saved successfully.'
+        ]);
     }
 
     /**
