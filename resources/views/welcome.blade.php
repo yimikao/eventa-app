@@ -76,6 +76,7 @@
 
     <main class="text-center">
         <h1 class="text-center mb-4" style="font-size:4em">Events happen here!</h1>
+        <p>Eventa let's you easily share and get registrations for your events</p>
 
      <!-- <div class="btn-grou">              -->
         <button id= "btn" type="button" class=" btn btn-primary btn-lg"> <a href="/events">Browse Events</a></button>

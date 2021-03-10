@@ -7,6 +7,7 @@
             <h1>{{ $event->theme }}</h1>
             <p>{{ $event->caption }}</p>
             <p>{{ $event->category}}</p>
+            <p>{{ $event->registrations->count() }} people are attending</p>
 
             <h4>Hosted by: {{ $event->user->name }}</h4>
 

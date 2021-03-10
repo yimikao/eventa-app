@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth', 'prefix'=>'dashboard'], function() {
     Route::delete('/events/{event}', [App\Http\Controllers\EventController::class, 'destroy']);
 
     Route::get('/registrations', [App\Http\Controllers\UserController::class, 'showRegistrations']);
+    Route::get('/profile', [App\Http\Controllers\UserController::class, 'show']);
     Route::get('/settings', [App\Http\Controllers\UserController::class, 'edit']);
     Route::post('/settings', [App\Http\Controllers\UserController::class, 'update']);
 

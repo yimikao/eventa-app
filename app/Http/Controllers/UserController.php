@@ -46,8 +46,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
-    {
-        return $user->events;
+    {   
+        $user->load('events');
+        return view('pages.user.profile', ['user' => Auth::user()]);
     }
 
     /**
@@ -58,7 +59,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.user.profile', ['user' => Auth::user()]);
+        return view('pages.user.edit-profile', ['user' => Auth::user()]);
     }
 
     /**

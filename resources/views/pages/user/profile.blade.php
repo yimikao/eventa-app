@@ -1,21 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-<form class="col-sm-6 m-auto" action="/dashboard/settings" method="post">
+<div class="container text-center">
     
-    <div class="mb-3">
-    <label for="name" class="form-label">Your name</label>
-    <input type="text" class="form-control{{ $errors->first('background_color') ? 'is-invalid' : '' }} form-control-lg" id="exampleFormControlInput1" name="name" value="{{$user->name}}">
-    </div>
+    <h1 class="">Display name</h1>
+    <div class="col-sm-6 jumbotron m-auto p-4 ">
+        <h1 class="" style="font-size:2.5em">{{ $user->name }}</h1>
+        <button id= "btn" type="button" class="btn btn-primary btn-lg"> <a href="/dashboard/settings">Edit name</a></button>
 
-    @csrf
-    <button type="submit" class="btn btn-lg btn-primary{{ session('success') ? 'is-valid' : '' }}">Update settings</button>
-        @if(session('success'))
-            <div class="valid-feedback">{{ session('success') }}</div>
-        @endif
+    </div><br><br><br>
 
-        
-  </form>
+
+    <h1 class="mb-4" style="font-size:2em">Your Registrations analysis</h1>
+
+    <h1 class="mb-2">Overall</h1>
+    <div class="col-sm-6 jumbotron m-auto p-4">
+        <h1 style="font-size:2.5em">{{ $user->registrations->count() }} registrations</h1>
+    </div><br>
+
+    <h1 class="mb-2">Registrations per event</h1>
+
+    @foreach($user->events as $event)
+        <div class="col-sm-6 jumbotron m-auto p-4 mb-4">
+        <h1 style="font-size:1em">{{ $event->theme }}</h1>
+            <h1 style="font-size:2.5em">{{ $event->registrations->count() }} registrations</h1>
+        </div>
+    @endforeach
 </div>
 @endsection
