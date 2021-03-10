@@ -3,12 +3,18 @@
 
 
 @section('content')
-        <div class="contaier text-center mt-5">
-            <h1 style="color: var(--purple)">{{ $event->theme }}</h1>
-            <p style="color: var(--purple)">{{ $event->caption }}</p>
-            <h4 style="color: var(--purple)">Hosted by: {{ $event->user->name }}</h4>
+        <div class="contaier text-center text-indigo-900 mt-5">
+            <h1>{{ $event->theme }}</h1>
+            <p>{{ $event->caption }}</p>
+            <p>{{ $event->category}}</p>
+
+            <h4>Hosted by: {{ $event->user->name }}</h4>
 
             <button id= "btn" type="button" class="btn btn-primary btn-lg"><a href="/events/{{ $event->id }}/register">Register</a> </button>
+            @auth
+                        <button id= "btn" type="button" class="btn mt-3 btn-primary btn-lg"> <a href="/dashboard/events/{{ $event->id }}/edit">Edit event</a></button>
+
+                    @endauth
 
             
         </div>

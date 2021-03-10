@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Event;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['events' => Event::paginate(3)]);
 });
 
 Auth::routes();
@@ -27,6 +29,17 @@ Route::get('/events/{event}/register', [App\Http\Controllers\RegistrationControl
 Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('events');
 Route::get('/events/{event}', [App\Http\Controllers\EventController::class, 'show']);
 Route::get('/allevents/{user}', [App\Http\Controllers\UserController::class, 'show']);
+
+Route::group(['prefix'=>'categories'], function() {
+    Route::get('/', function () {
+        return view();
+    });
+
+    Route::get('/tech', function () {
+        $tech_events = Event::where('category', 'tech');
+        return view('', []);
+    });
+});
 
 
 

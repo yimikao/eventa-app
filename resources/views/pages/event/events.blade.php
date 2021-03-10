@@ -15,9 +15,8 @@
                     
                     <h4 class="card-title"><a class="text-primary" href="/events/{{ $event->id }}">{{ $event->theme }}</a></h4>
                     <p class=”card-text”> {{ $event->caption }}</p>
-                    <div class=”card-footer”>Happening on: {{ $event->date }}</div>
-                    <div class=”card-footer”>Host: {{ $event->user->name }}</div>
-                    <div class=”card-footer”>At:{{ $event->time }}</div>
+                    <div class=”card-footer”>Date: {{ $event->date }}</div>
+                    <div class=”card-footer”>Time:{{ $event->time }}</div>
 
                     @auth
                         <button id= "btn" type="button" class="btn btn-primary btn-lg"> <a href="/dashboard/events/{{ $event->id }}/edit">Edit event</a></button>

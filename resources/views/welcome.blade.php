@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/style.css') }}" rel="stylesheet"> -->
 
 
 
@@ -39,15 +39,16 @@
     </head>
     <body class="antialiased">
         
-    <nav>
-        <h2>eventa</h2>
+    <nav class="navbar navbar-default">
+            <div class="container-fluid">
+        <h2 class="navbar-header">eventa</h2>
         @if (Route::has('login'))
-            <ul>
+            <ul class="nav navbar-nav">
                 <li id=""><a href="{{ url('/dashboard/events/create') }}">Create Event</a></li>
             @auth
-                <li id="nav-btn"><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
             @else
-                <li id="nav-btn"><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
                 @if (Route::has('register'))
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @endif
@@ -55,6 +56,7 @@
                 @endauth
             </ul>
         @endif
+    </div>
     </nav>
         <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
@@ -71,11 +73,17 @@
                 </div>
             @endif
         </div> -->
-    <main id="heading" class="">
-        <h1>Events happen here!</h1>
-                    
-        <button id= "btn" type="button" class="btn btn-light btn-lg"> <a href="/events">Browse Events</a></button>
-        <!-- <button id= "btn" type="button" class="btn btn-secondary btn-lg"> <a href="/dashboard/events/create">Create Event</a></button> -->
+
+    <main class="text-center">
+        <h1 class="text-center mb-4" style="font-size:4em">Events happen here!</h1>
+
+     <!-- <div class="btn-grou">              -->
+        <button id= "btn" type="button" class=" btn btn-primary btn-lg"> <a href="/events">Browse Events</a></button>
+        <!-- <button id= "btn" type="button" class="btn btn-light btn-lg"> <a href="/dashboard/events/create">Create Event</a></button> -->
+        <!-- </div>   -->
+        @foreach($events as $event)
+            <div> {{ $event->theme }} </div>
+        @endforeach
 
     </main>
 

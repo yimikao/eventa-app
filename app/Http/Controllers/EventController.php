@@ -40,7 +40,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $event = Auth::user()->events()->create($request->only(['theme', 'caption', 'date', 'time']));
+        $event = Auth::user()->events()->create($request->only(['theme', 'caption', 'category', 'date', 'time']));
 
         if($event) {
             return redirect()->to('/events');
@@ -92,7 +92,7 @@ class EventController extends Controller
             // 'link' => 'required|url'
         ]);
 
-        $event->update($request->only(['theme', 'caption', 'date', 'time']));
+        $event->update($request->only(['theme', 'caption','category','date', 'time']));
 
         return redirect()->to('/events');
     }

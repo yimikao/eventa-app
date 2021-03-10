@@ -2,36 +2,20 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-12 card">
-                <div class="card-body">
-                    <h2 class="card-title text-primary">Update Settings</h2>
-                    <form action="/dashboard/settings" method="post">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" class="form-control{{ $errors->first('background_color') ? 'is-invalid' : '' }}" value="{{ $user->name }}">
-                                    @if($errors->first('background_color'))
-                                        <div class="invalid-feedback">{{ $errors->first('background_color') }}</div>
-                                    @endif
-                                </div>
-                            </div>
-
-
-
-                        <div class="row">
-                            <div class="col-12 ">
-                                @csrf
-                                <button type="submit" class="btn btn-primary{{ session('success') ? 'is-valid' : '' }}">Save Link</button>
-                                @if(session('success'))
-                                    <div class="valid-feedback">{{ session('success') }}</div>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                    
-            </div>
-        </div>
+<form class="col-sm-6 m-auto" action="/dashboard/settings" method="post">
+    
+    <div class="mb-3">
+    <label for="name" class="form-label">Your name</label>
+    <input type="text" class="form-control{{ $errors->first('background_color') ? 'is-invalid' : '' }} form-control-lg" id="exampleFormControlInput1" name="name" value="{{$user->name}}">
     </div>
+
+    @csrf
+    <button type="submit" class="btn btn-lg btn-primary{{ session('success') ? 'is-valid' : '' }}">Update settings</button>
+        @if(session('success'))
+            <div class="valid-feedback">{{ session('success') }}</div>
+        @endif
+
+        
+  </form>
+</div>
 @endsection
