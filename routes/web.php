@@ -15,7 +15,7 @@ use App\Models\Event;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome', ['events' => Event::paginate(3)]);
 });
 
